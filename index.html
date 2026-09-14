@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>EnglishMaster · B2 → C1</title>
+<meta name="description" content="Practice English tenses, vocabulary, idioms and writing to move from B2 to C1." />
+<meta name="theme-color" content="#080b09" />
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icon-192.png" />
+<link rel="apple-touch-icon" href="icon-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="EnglishMaster" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<noscript>This app needs JavaScript to run. Please open it in a full web browser (not a file preview) — Chrome, Safari or Edge all work.</noscript>
+
+<header class="topbar">
+  <button class="icon-btn" id="btn-home" aria-label="Main menu" title="Main menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 4l8 7.5V19a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/></svg>
+  </button>
+  <div class="brand">
+    <span class="brand-mark">EM</span>
+    <span class="brand-text">
+      <span class="brand-name">EnglishMaster</span>
+      <span class="brand-level">B2 → C1</span>
+    </span>
+  </div>
+  <div class="streak-pill" id="streak-pill" title="Day streak">
+    <svg viewBox="0 0 24 24"><path d="M12 2c1 3-2 4-2 7a3 3 0 0 0 6 0c1 1.5 1.5 3 1.5 4.5A6.5 6.5 0 0 1 5.5 13.5C5.5 8 9 5 12 2z"/></svg>
+    <span id="streak-count">0</span>
+  </div>
+</header>
+
+<main id="app">
+
+  <!-- ========== HOME / MAIN MENU ========== -->
+  <section class="view" id="view-home" data-view="home">
+    <div class="hero">
+      <h1>Welcome back!</h1>
+      <p class="hero-sub">Everything you need to push your English from <strong>B2</strong> to <strong>C1</strong> — all in one place.</p>
+    </div>
+
+    <div class="stat-strip" id="home-stats">
+      <div class="stat-chip"><span class="stat-num" id="stat-words">0</span><span class="stat-label">words mastered</span></div>
+      <div class="stat-chip"><span class="stat-num" id="stat-accuracy">–</span><span class="stat-label">quiz accuracy</span></div>
+      <div class="stat-chip"><span class="stat-num" id="stat-tenses">0/12</span><span class="stat-label">tenses selected</span></div>
+    </div>
+
+    <h2 class="section-title">Main menu</h2>
+    <nav class="menu-list" aria-label="Main menu">
+      <button class="menu-row" data-goto="vocab">
+        <span class="menu-row-icon"><svg viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h6v16H6a2 2 0 0 1-2-2z"/><path d="M20 6a2 2 0 0 0-2-2h-6v16h6a2 2 0 0 0 2-2z"/></svg></span>
+        <span class="menu-row-text">
+          <span class="menu-row-title">Vocabulary</span>
+          <span class="menu-row-desc">Flashcards: phrasal verbs, collocations &amp; advanced words</span>
+        </span>
+        <span class="menu-row-arrow"><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></span>
+      </button>
+      <button class="menu-row" data-goto="tenses">
+        <span class="menu-row-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.2 2"/></svg></span>
+        <span class="menu-row-text">
+          <span class="menu-row-title">Tenses &amp; Grammar</span>
+          <span class="menu-row-desc">All 12 English tenses — pick which ones to practise</span>
+        </span>
+        <span class="menu-row-arrow"><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></span>
+      </button>
+      <button class="menu-row" data-goto="phrases">
+        <span class="menu-row-icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v10.5H9.5L5 19v-3.5H4z"/></svg></span>
+        <span class="menu-row-text">
+          <span class="menu-row-title">Idioms &amp; Phrases</span>
+          <span class="menu-row-desc">Phrase of the day + a full browsable list</span>
+        </span>
+        <span class="menu-row-arrow"><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></span>
+      </button>
+      <button class="menu-row" data-goto="writing">
+        <span class="menu-row-icon"><svg viewBox="0 0 24 24"><path d="m4 20 1-4L15.5 5.5a2 2 0 0 1 3 3L8 19l-4 1z"/></svg></span>
+        <span class="menu-row-text">
+          <span class="menu-row-title">Writing Practice</span>
+          <span class="menu-row-desc">Fill-in-the-blank &amp; sentence building</span>
+        </span>
+        <span class="menu-row-arrow"><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></span>
+      </button>
+      <button class="menu-row" data-goto="progress">
+        <span class="menu-row-icon"><svg viewBox="0 0 24 24"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span>
+        <span class="menu-row-text">
+          <span class="menu-row-title">Progress</span>
+          <span class="menu-row-desc">Your stats across every section</span>
+        </span>
+        <span class="menu-row-arrow"><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></span>
+      </button>
+    </nav>
+
+    <h2 class="section-title">Phrase of the day</h2>
+    <div class="phrase-preview" id="home-phrase-preview"></div>
+  </section>
+
+  <!-- ========== VOCABULARY ========== -->
+  <section class="view" id="view-vocab" data-view="vocab" hidden>
+    <h1>Vocabulary</h1>
+    <p class="view-sub">Tap a card to flip it. Be honest — it's the fastest way to progress.</p>
+
+    <div class="chip-row" id="vocab-categories"></div>
+
+    <div class="progress-bar-wrap">
+      <div class="progress-bar"><div class="progress-bar-fill" id="vocab-progress-fill"></div></div>
+      <span class="progress-bar-label" id="vocab-progress-label">0 / 0 mastered</span>
+    </div>
+
+    <div class="flashcard-zone">
+      <div class="flashcard" id="flashcard">
+        <div class="flashcard-inner">
+          <div class="flashcard-face flashcard-front">
+            <span class="fc-pos" id="fc-pos"></span>
+            <span class="fc-word" id="fc-word"></span>
+            <span class="fc-tap-hint">tap to flip</span>
+          </div>
+          <div class="flashcard-face flashcard-back">
+            <span class="fc-def" id="fc-def"></span>
+            <span class="fc-example" id="fc-example"></span>
+          </div>
+        </div>
+      </div>
+      <p class="fc-counter" id="fc-counter"></p>
+      <div class="fc-actions">
+        <button class="btn btn-outline" id="fc-again">Still learning</button>
+        <button class="btn btn-primary" id="fc-know">Got it</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TENSES & GRAMMAR ========== -->
+  <section class="view" id="view-tenses" data-view="tenses" hidden>
+    <h1>Tenses &amp; Grammar</h1>
+    <p class="view-sub">Select the tenses you want to work on. The quiz will only draw questions from what's selected.</p>
+
+    <div class="select-actions">
+      <button class="btn btn-small btn-outline" id="tenses-select-all">Select all</button>
+      <button class="btn btn-small btn-outline" id="tenses-select-none">Deselect all</button>
+      <span class="tenses-selected-count" id="tenses-selected-count"></span>
+    </div>
+
+    <div class="tense-list" id="tense-list"></div>
+
+    <button class="btn btn-primary btn-block" id="start-quiz-btn">Start quiz</button>
+
+    <!-- Quiz overlay screen -->
+    <div class="quiz-screen" id="quiz-screen" hidden>
+      <div class="quiz-top">
+        <button class="icon-btn" id="quiz-close" aria-label="Close quiz">
+          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        </button>
+        <div class="quiz-progress-track"><div class="quiz-progress-fill" id="quiz-progress-fill"></div></div>
+        <span class="quiz-score" id="quiz-score"></span>
+      </div>
+
+      <div class="quiz-body" id="quiz-body">
+        <span class="quiz-tense-tag" id="quiz-tense-tag"></span>
+        <p class="quiz-question" id="quiz-question"></p>
+        <div class="quiz-options" id="quiz-options"></div>
+        <p class="quiz-explanation" id="quiz-explanation" hidden></p>
+        <button class="btn btn-primary btn-block" id="quiz-next" hidden>Next question</button>
+      </div>
+
+      <div class="quiz-result" id="quiz-result" hidden>
+        <h2>Quiz complete!</h2>
+        <p class="quiz-result-score" id="quiz-result-score"></p>
+        <div class="quiz-result-breakdown" id="quiz-result-breakdown"></div>
+        <button class="btn btn-primary btn-block" id="quiz-restart">Practise again</button>
+        <button class="btn btn-outline btn-block" id="quiz-back-home">Back to menu</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PHRASES ========== -->
+  <section class="view" id="view-phrases" data-view="phrases" hidden>
+    <h1>Idioms &amp; Phrases</h1>
+    <p class="view-sub">A new expression every day — plus the full list to browse anytime.</p>
+
+    <h2 class="section-title">Today's phrase</h2>
+    <div class="phrase-preview" id="phrases-today"></div>
+
+    <h2 class="section-title">All phrases</h2>
+    <div class="phrase-list" id="phrase-list"></div>
+  </section>
+
+  <!-- ========== WRITING ========== -->
+  <section class="view" id="view-writing" data-view="writing" hidden>
+    <h1>Writing Practice</h1>
+    <p class="view-sub">Build accuracy with advanced structures: conditionals, inversion, subjunctive and more.</p>
+
+    <div class="chip-row">
+      <button class="chip chip-active" data-mode="fill">Fill in the blank</button>
+      <button class="chip" data-mode="scramble">Sentence builder</button>
+    </div>
+
+    <div class="writing-zone" id="writing-fill">
+      <p class="writing-counter" id="fill-counter"></p>
+      <p class="writing-sentence" id="fill-sentence"></p>
+      <div class="quiz-options" id="fill-options"></div>
+      <p class="quiz-explanation" id="fill-hint" hidden></p>
+      <button class="btn btn-primary btn-block" id="fill-next" hidden>Next sentence</button>
+    </div>
+
+    <div class="writing-zone" id="writing-scramble" hidden>
+      <p class="writing-counter" id="scramble-counter"></p>
+      <div class="scramble-target" id="scramble-target"></div>
+      <div class="scramble-bank" id="scramble-bank"></div>
+      <div class="scramble-actions">
+        <button class="btn btn-outline" id="scramble-clear">Clear</button>
+        <button class="btn btn-primary" id="scramble-check">Check</button>
+      </div>
+      <p class="quiz-explanation" id="scramble-feedback" hidden></p>
+      <button class="btn btn-primary btn-block" id="scramble-next" hidden>Next sentence</button>
+    </div>
+  </section>
+
+  <!-- ========== PROGRESS ========== -->
+  <section class="view" id="view-progress" data-view="progress" hidden>
+    <h1>Progress</h1>
+    <p class="view-sub">Everything you've achieved so far.</p>
+    <div class="progress-cards" id="progress-cards"></div>
+  </section>
+
+</main>
+
+<nav class="bottom-nav" aria-label="Sections">
+  <button class="nav-btn" data-goto="home">
+    <svg viewBox="0 0 24 24"><path d="M4 11.5 12 4l8 7.5V19a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/></svg>
+    <span>Menu</span>
+  </button>
+  <button class="nav-btn" data-goto="vocab">
+    <svg viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h6v16H6a2 2 0 0 1-2-2z"/><path d="M20 6a2 2 0 0 0-2-2h-6v16h6a2 2 0 0 0 2-2z"/></svg>
+    <span>Words</span>
+  </button>
+  <button class="nav-btn" data-goto="tenses">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.2 2"/></svg>
+    <span>Tenses</span>
+  </button>
+  <button class="nav-btn" data-goto="phrases">
+    <svg viewBox="0 0 24 24"><path d="M4 5h16v10.5H9.5L5 19v-3.5H4z"/></svg>
+    <span>Phrases</span>
+  </button>
+  <button class="nav-btn" data-goto="writing">
+    <svg viewBox="0 0 24 24"><path d="m4 20 1-4L15.5 5.5a2 2 0 0 1 3 3L8 19l-4 1z"/></svg>
+    <span>Write</span>
+  </button>
+</nav>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
